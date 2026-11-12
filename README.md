@@ -1,6 +1,6 @@
 # LUMEN - Projeto N3 DevOps
 
-Avaliação N3 da disciplina **Ferramentas de Implantação Contínua - DevOps** (ADS UNICESUSC, Prof. Joe Jonas Vogel).
+Avaliação N3 da disciplina **Ferramentas de Implantação Contínua - DevOps**.
 
 O LUMEN traduz movimentações processuais ("Conclusos para sentença", "Juntada de petição"...) para linguagem simples, para o cliente de um advogado entender o andamento do seu processo. Esta é uma versão MVP do projeto do PMI, feita em Node.js/Express, sem banco de dados, para focar no pipeline de DevOps.
 
