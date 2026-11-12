@@ -1,5 +1,5 @@
 {
-  "name": "lumen-devops",
+  "name": "lumen_devops",
   "version": "1.0.0",
   "description": "LUMEN - tradutor de movimentações processuais para linguagem simples. Projeto N3 de Ferramentas de Implantação Contínua (DevOps).",
   "main": "src/server.js",

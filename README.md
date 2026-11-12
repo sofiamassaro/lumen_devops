@@ -33,7 +33,7 @@ feature/xyz --PR--> develop --CI--> Delivery (merge automático na main) --Deplo
 ## Estrutura
 
 ```
-lumen-devops/
+lumen_devops/
 ├── .github/workflows/
 │   ├── ci.yml                  # CI (lint, cobertura, unidade, Selenium) + Delivery
 │   └── deploy.yml              # Continuous Deployment na EC2
@@ -83,7 +83,7 @@ O Selenium Manager encontra o driver do Chrome sozinho. Se der erro de versão d
 
 # Guia de configuração (passo a passo)
 
-Façam na ordem. Reservem uma tarde: a primeira vez costuma levar de 1h a 2h.
+Faça na ordem. Reserve uma tarde: a primeira vez costuma levar de 1h a 2h.
 
 ## 1. Testar localmente
 
@@ -99,14 +99,14 @@ Abra `http://localhost:3000` e traduza "Conclusos para sentença".
 
 ## 2. Repositório novo no GitHub e branches
 
-O enunciado pede um **repositório novo**. Crie no GitHub um repositório público vazio chamado `lumen-devops` (sem README, sem .gitignore). Depois, na pasta do projeto:
+O enunciado pede um **repositório novo**. Crie no GitHub um repositório público vazio chamado `lumen_devops` (sem README, sem .gitignore). Depois, na pasta do projeto:
 
 ```bash
 git init
 git add .
 git commit -m "Estrutura inicial do LUMEN com CI/CD"
 git branch -M main
-git remote add origin https://github.com/SEU_USUARIO/lumen-devops.git
+git remote add origin https://github.com/sofiamassaro/lumen_devops.git
 git push -u origin main
 
 git checkout -b develop
@@ -116,7 +116,6 @@ git push -u origin develop
 No GitHub:
 
 - **Settings > General > Default branch**: troque para `develop`. Assim os PRs abrem contra ela.
-- **Settings > Collaborators**: adicione os outros dois integrantes do grupo.
 - Não ative proteção de branch na `main`: o job de Delivery precisa dar push nela.
 
 O primeiro push na `main` vai disparar o Deploy, que vai falhar porque os secrets e a EC2 ainda não existem. Isso é esperado; ele será rodado de novo no passo 7.
@@ -133,7 +132,7 @@ Se já tiver feito antes (repositório `projeto-devops` e token), pule para o pa
 
 **Seu perfil > Settings > Developer settings > Personal access tokens > Tokens (classic) > Generate new token (classic)**
 
-- Note: `lumen-devops-delivery`
+- Note: `lumen_devops-delivery`
 - Expiration: 30 dias (cobre a apresentação)
 - Escopos: **`repo`** e **`workflow`**
 
@@ -145,7 +144,7 @@ Por que um token pessoal: um push feito com o token padrão do Actions (`GITHUB_
 
 No console da AWS, **EC2 > Launch instance**:
 
-- Nome: `lumen-devops`
+- Nome: `lumen_devops`
 - Imagem: **Ubuntu Server 24.04 LTS**
 - Tipo: `t2.micro` ou `t3.micro` (free tier)
 - Key pair: crie uma nova, tipo RSA, formato **.pem**, e guarde o arquivo
@@ -158,9 +157,9 @@ Atenção: se a porta 22 ficar restrita a "My IP", o GitHub Actions não consegu
 Conecte e prepare a máquina:
 
 ```bash
-ssh -i lumen-devops.pem ubuntu@IP_PUBLICO
-git clone https://github.com/SEU_USUARIO/lumen-devops.git
-cd lumen-devops
+ssh -i lumen_devops.pem ubuntu@IP_PUBLICO
+git clone https://github.com/sofiamassaro/lumen_devops.git
+cd lumen_devops
 bash deploy/setup-ec2.sh
 exit
 ```
@@ -170,8 +169,8 @@ Entre por SSH de novo e confira com `docker ps` (deve responder sem erro de perm
 No Windows, se o `ssh` reclamar de permissão do `.pem`, rode no PowerShell:
 
 ```powershell
-icacls lumen-devops.pem /inheritance:r
-icacls lumen-devops.pem /grant:r "$($env:USERNAME):(R)"
+icacls lumen_devops.pem /inheritance:r
+icacls lumen_devops.pem /grant:r "$($env:USERNAME):(R)"
 ```
 
 ## 6. Secrets do repositório
@@ -192,7 +191,7 @@ icacls lumen-devops.pem /grant:r "$($env:USERNAME):(R)"
 
 ## 8. Branches de feature
 
-Cada integrante cria pelo menos uma branch de feature e abre um PR para a `develop`. Isso deixa no histórico o uso das branches e a participação do grupo. Exemplo:
+Crie pelo menos uma branch de feature e abra um PR para a `develop`. Isso deixa no histórico o uso das branches. Exemplo:
 
 ```bash
 git checkout develop
@@ -210,7 +209,7 @@ No GitHub, abra o PR de `feature/nova-movimentacao` para `develop`, espere o CI 
 
 # Roteiro da apresentação
 
-Ensaiem pelo menos uma vez antes do dia 19/11 com o mesmo roteiro. O pipeline inteiro leva uns 4 a 6 minutos.
+Ensaie pelo menos uma vez antes do dia 19/11 com o mesmo roteiro. O pipeline inteiro leva uns 4 a 6 minutos.
 
 **Antes de começar**
 
