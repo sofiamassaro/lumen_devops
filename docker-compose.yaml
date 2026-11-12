@@ -1,0 +1,13 @@
+# Usado na EC2 pelo workflow de deploy.
+# A variável IMAGE é definida pelo deploy.yml (usuario/projeto-devops:<sha>).
+services:
+  lumen:
+    image: ${IMAGE}
+    container_name: lumen
+    restart: unless-stopped
+    ports:
+      # Só a própria máquina acessa a 3000; o público entra pela 80 (Nginx).
+      - "127.0.0.1:3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000

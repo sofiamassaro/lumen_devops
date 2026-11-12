@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUMEN - Seu processo em linguagem simples</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="marca">
+      <span class="logo" aria-hidden="true"></span>
+      <h1>LUMEN</h1>
+    </div>
+    <p class="slogan">Seu processo explicado em linguagem simples.</p>
+  </header>
+
+  <main class="conteudo">
+    <section class="cartao">
+      <h2>Traduzir movimentação</h2>
+      <p class="ajuda">Cole abaixo o andamento que aparece no site do tribunal.</p>
+
+      <form id="form-traducao" novalidate>
+        <label for="movimentacao">Movimentação processual</label>
+        <textarea id="movimentacao" name="movimentacao" rows="3"
+          placeholder="Ex.: Conclusos para sentença"></textarea>
+
+        <div class="exemplos">
+          <span>Exemplos:</span>
+          <button type="button" class="chip" data-exemplo="Conclusos para sentença">Conclusos para sentença</button>
+          <button type="button" class="chip" data-exemplo="Juntada de petição">Juntada de petição</button>
+          <button type="button" class="chip" data-exemplo="Audiência designada">Audiência designada</button>
+        </div>
+
+        <button type="submit" id="btn-traduzir" class="botao">Traduzir</button>
+      </form>
+
+      <p id="erro" class="erro" role="alert" hidden></p>
+
+      <article id="resultado" class="resultado" hidden>
+        <span id="resultado-categoria" class="etiqueta"></span>
+        <p id="resultado-texto" class="traducao"></p>
+        <p class="aviso">Toda tradução é revisada pelo seu advogado antes de ser publicada.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <span>LUMEN - Projeto N3 DevOps - ADS UNICESUSC</span>
+    <span id="versao">Versão 1.0</span>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
