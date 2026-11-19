@@ -1,9 +1,3 @@
-// Funções utilitárias de texto, usadas pelo tradutor e pela validação.
-
-/**
- * Remove acentos, deixa minúsculo e colapsa espaços.
- * "  Concluso para DECISÃO " -> "concluso para decisao"
- */
 function normalizar(texto) {
   return String(texto)
     .normalize('NFD')
@@ -15,10 +9,6 @@ function normalizar(texto) {
 
 const TAMANHO_MAXIMO = 500;
 
-/**
- * Valida a movimentação enviada pelo usuário.
- * Retorna { valido: true } ou { valido: false, erro: 'mensagem' }.
- */
 function validarMovimentacao(texto) {
   if (typeof texto !== 'string') {
     return { valido: false, erro: 'Informe a movimentação como texto.' };

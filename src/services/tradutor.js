@@ -1,12 +1,5 @@
-// Núcleo do LUMEN: traduz movimentações processuais para linguagem simples.
-// No produto final a tradução é feita por IA e revisada pelo advogado;
-// neste MVP ela é feita por regras (dicionário de termos), o que permite
-// testar o comportamento de forma determinística.
-
 const { normalizar } = require('../utils/texto');
 
-// A ordem importa: termos mais específicos vêm antes dos genéricos
-// ("concluso para sentenca" antes de "concluso").
 const DICIONARIO = [
   {
     termos: ['transito em julgado', 'transitado em julgado'],
@@ -85,11 +78,6 @@ const DICIONARIO = [
 const NAO_RECONHECIDA =
   'Ainda não temos uma tradução automática para esta movimentação. Seu advogado vai revisar e explicar em breve.';
 
-/**
- * Traduz uma movimentação processual.
- * @param {string} movimentacao texto original do tribunal
- * @returns {{original: string, traducao: string, categoria: string, reconhecida: boolean}}
- */
 function traduzir(movimentacao) {
   const original = String(movimentacao).trim();
   const texto = normalizar(original);
@@ -115,7 +103,6 @@ function traduzir(movimentacao) {
   };
 }
 
-/** Lista as categorias conhecidas, sem repetição, em ordem alfabética. */
 function listarCategorias() {
   return [...new Set(DICIONARIO.map((item) => item.categoria))].sort();
 }
