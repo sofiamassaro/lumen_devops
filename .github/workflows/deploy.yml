@@ -1,16 +1,9 @@
-# Workflow 2: Continuous Deployment na EC2
-#
-# Dispara a cada push na main (feito automaticamente pelo job de Delivery).
-#   1. Gera a imagem Docker e envia ao Docker Hub (tags: SHA do commit e latest)
-#   2. Copia o docker-compose.yaml para a EC2
-#   3. Entra na EC2 por SSH, baixa a imagem nova e reinicia o container
-
 name: Deploy EC2
 
 on:
   push:
     branches: [main]
-  workflow_dispatch: # permite rodar manualmente pela aba Actions
+  workflow_dispatch: 
 
 env:
   IMAGE_NAME: ${{ secrets.DOCKER_USERNAME }}/projeto-devops

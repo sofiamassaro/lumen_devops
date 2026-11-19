@@ -1,5 +1,3 @@
-// Configuração do Express. Fica separada do server.js para que os testes
-// possam importar o app sem abrir uma porta.
 const path = require('path');
 const express = require('express');
 const { traduzir, listarCategorias } = require('./services/tradutor');
@@ -11,7 +9,6 @@ const app = express();
 app.use(express.json({ limit: '10kb' }));
 app.use(express.static(path.join(__dirname, '..', 'public')));
 
-// Usado pelo deploy e pelo Nginx para saber se a aplicação está no ar.
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', versao: version });
 });
@@ -31,7 +28,6 @@ app.post('/api/traduzir', (req, res) => {
   return res.json(traduzir(movimentacao));
 });
 
-// JSON malformado no corpo da requisição.
 app.use((err, req, res, next) => {
   if (err.type === 'entity.parse.failed') {
     return res.status(400).json({ erro: 'JSON inválido.' });

@@ -1,4 +1,3 @@
-// Lógica da página: envia a movimentação para a API e mostra a tradução.
 (function () {
   const form = document.getElementById('form-traducao');
   const campo = document.getElementById('movimentacao');
