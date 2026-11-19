@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-# Prepara uma EC2 Ubuntu nova para receber o deploy. Rode UMA vez, logado
-# por SSH, a partir da pasta do projeto clonado:
-#   bash deploy/setup-ec2.sh
 set -euo pipefail
 
 echo "==> Atualizando pacotes"
@@ -11,7 +8,6 @@ echo "==> Instalando Docker e o plugin compose"
 if ! command -v docker >/dev/null 2>&1; then
   curl -fsSL https://get.docker.com | sudo sh
 fi
-# Permite rodar docker sem sudo (o deploy por SSH precisa disso)
 sudo usermod -aG docker ubuntu
 
 echo "==> Instalando Nginx"
