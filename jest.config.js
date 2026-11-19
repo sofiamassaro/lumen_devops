@@ -1,7 +1,3 @@
-// Três "projetos" de teste, cada um rodado por um job diferente no CI:
-//  - unit:        testes de unidade (funções puras, sem servidor)
-//  - integration: testes das rotas HTTP com supertest
-//  - e2e:         teste de interface com Selenium (abre o Chrome de verdade)
 module.exports = {
   collectCoverageFrom: ['src/**/*.js', '!src/server.js'],
   coverageDirectory: 'coverage',

@@ -1,6 +1,3 @@
-// Teste de interface com Selenium: sobe a aplicação numa porta livre,
-// abre o Chrome em modo headless (sem janela) e usa a página como um
-// usuário faria.
 const { Builder, By, until } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 const app = require('../../src/app');
@@ -25,8 +22,7 @@ beforeAll(async () => {
   );
   const builder = new Builder().forBrowser('chrome').setChromeOptions(opcoes);
 
-  // Opcional: caminho de um chromedriver específico. Sem essa variável, o
-  // Selenium Manager encontra (ou baixa) o driver certo sozinho.
+  
   if (process.env.CHROMEDRIVER_PATH) {
     builder.setChromeService(new chrome.ServiceBuilder(process.env.CHROMEDRIVER_PATH));
   }
